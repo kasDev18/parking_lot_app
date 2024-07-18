@@ -19,9 +19,9 @@ app.get('/', (req, res) => {
     res.render("index", {});
 })
 
-app.get("/home", function(req, res) {
+app.get("/entry", function(req, res) {
     setTimeout(() => {
-        res.render("home");
+        res.render("entry");
     }, 3000);
 });
 
