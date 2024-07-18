@@ -23,6 +23,14 @@ app.get("/entry", function(req, res) {
     setTimeout(() => {
         res.render("entry");
     }, 3000);
+
+    // interval(3000);
+});
+
+app.get("/vehicle/type", function(req, res) {
+    setTimeout(() => {
+        res.render("entry");
+    }, 700);
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
