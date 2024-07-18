@@ -1,0 +1,33 @@
+<% layout('layouts/boilerplate')%>
+
+<style>
+    .index-body {
+        width: 99.9vw;
+        height: 100vh;
+        background: url("../images/parking_bg.jpg") no-repeat;
+        background-size: cover;
+    }
+</style>
+
+<div class="index-body">
+    <div class="col-md d-flex">
+        <div class="px-2 pt-1 col" id="logo"><img class="bg-light border rounded img-fluid" src="images/app_logo.png" alt="" height="70" width="70"></div>
+        <h1 class="col-8 d-flex justify-content-center text-light align-items-center">The Parking Spot App</h1>
+        <div class="col"></div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-lg btn-warning border rounded-pill text-light" id="btn-start" type="button" href="/home"><span id="spinner-icon"></span>&nbsp; Get Started</a>
+    </div>
+    
+    <footer>
+        <p class="text-light">&copy; <script>document.write(new Date().getFullYear())</script> theParkingSpot. All rights reserved.</p>
+    </footer>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $("#btn-start").click(function(){
+            $("#spinner-icon").html('<i class="fa fa-spinner fa-spin" style="font-size:24px"></i>')
+        });
+    });
+</script>
