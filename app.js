@@ -10,27 +10,32 @@ const port = 3000;
 app.engine('ejs', engine);
 
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'))
+app.set('views', path.join(__dirname, 'views'));
 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.use(express.static('vehicle'));
 
 app.get('/', (req, res) => {
-    // res.sendFile(__dirname + '/index.html');
     res.render("index", {});
 })
 
 app.get("/entry", function(req, res) {
-    setTimeout(() => {
-        res.render("entry");
-    }, 3000);
-
-    // interval(3000);
+    res.render("entry");
 });
 
-app.get("/vehicle/type", function(req, res) {
+app.post("/vehicle/type", function(req, res) {
+    const {entry} = req.body;
+
     setTimeout(() => {
-        res.render("entry");
+        res.render("type", {entry: entry});
     }, 700);
 });
+
+// app.get("/vehicle/type", function(req, res) {
+//     setTimeout(() => {
+//         res.render("entry");
+//     }, 700);
+// });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
