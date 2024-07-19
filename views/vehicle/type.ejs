@@ -14,7 +14,7 @@
                     <img src="images/vehicle-type/motorcycle.jpg" alt="" class="" height="200" width="195">
                 </div>
                 <div class="p-2 text-center">
-                    <button class="btn btn-outline-success btn-sm col-12 btn-vehicle-type" data-bs-toggle="button" aria-pressed="false">Small</button>
+                    <button class="btn btn-outline-success btn-sm col-12 btn-vehicle-type" data-bs-toggle="button" aria-pressed="false">Small Parking (SP)</button>
                 </div>
             </div>
             <div class="p-2 text-center">
@@ -22,7 +22,7 @@
                     <img src="images/vehicle-type/car.jpg" alt="" class="" height="200" width="195">
                 </div>
                 <div class="p-2 text-center">
-                    <button class="btn btn-outline-success btn-sm col-12 btn-vehicle-type" data-bs-toggle="button" aria-pressed="false">Medium</button>
+                    <button class="btn btn-outline-success btn-sm col-12 btn-vehicle-type" data-bs-toggle="button" aria-pressed="false">Medium Parking (MP)</button>
                 </div>
             </div>
             <div class="p-2 text-center">
@@ -30,7 +30,7 @@
                     <img src="images/vehicle-type/bus.jpg" alt="" class="" height="200" width="195">
                 </div>
                 <div class="p-2 text-center">
-                    <button class="btn btn-outline-success btn-sm col-12 btn-vehicle-type" data-bs-toggle="button" aria-pressed="false">Large</button>
+                    <button class="btn btn-outline-success btn-sm col-12 btn-vehicle-type" data-bs-toggle="button" aria-pressed="false">Large Parking (LP)</button>
                 </div>
             </div>
         </div>
@@ -42,19 +42,19 @@
                 <div class="mt-4">
                     <ol class="px-0">
                         <div class="mt-3">
-                            <b style="color: #947c2c;"><li>SMALL <i>(6,000 lbs to 10,000 lbs)</i></li></b>
+                            <b style="color: #947c2c;"><li>SMALL PARKING(SP) <i>(6,000 lbs to 10,000 lbs)</i></li></b>
                             <p class="mt-1" style="font-size: small; color: rgb(154, 154, 154);">
                                 Vehicle with a weight from 6,000 to 10,000 pounds like motorcycle, tricycle, e-bike, Full Size Pickup, SUV, Minivan, Mini Bus and Utility Van.
                             </p>
                         </div>
                         <div class="mt-3">
-                            <b style="color: #947c2c;"><li>MEDIUM <i>(10,000 lbs to 16,000 lbs)</i></li></b>
+                            <b style="color: #947c2c;"><li>MEDIUM PARKING(MP) <i>(10,000 lbs to 16,000 lbs)</i></li></b>
                             <p class="mt-1" style="font-size: small; color: rgb(154, 154, 154);">
                                 Vehicle with a weight from 10,000 to 16,000 pounds like City Delivery, Mini Bus, Walk In and Conventional Van.
                             </p>
                         </div>
                         <div class="mt-3">
-                            <b style="color: #947c2c;"><li>LARGE <i>(16,000 lbs to 33,000 lbs)</i></li></b>
+                            <b style="color: #947c2c;"><li>LARGE PARKING(LP) <i>(16,000 lbs to 33,000 lbs)</i></li></b>
                             <p class="mt-1" style="font-size: small; color: rgb(154, 154, 154);">
                                 Vehicle with a weight from 16,000 to 33,000 pounds like Bucket, City Transit Bus, etc..
                             </p>
@@ -77,8 +77,6 @@
 <script>
     $(function () {
         $('.type-nav span').addClass(' active border-bottom border-3 border-warning text-warning fw-bold');
-        $('.type-nav span').addClass('active');
-
 
         // var form = $('#vehicleTypeForm');
         $('.btn-vehicle-type').click(function () {
@@ -88,7 +86,12 @@
             $('#btn-vtype-submit').trigger('click');
             $('.vehicle-type h2').addClass('d-none');
             $('.vehicle-type .container').addClass('d-flex justify-content-center').html(bigSpinner);
-        })
+        });
+
+        // $('.navbar-nav').on('mouseleave', function () {
+        //     nav.removeClass('text-warning');
+        // });
+
         // $('#vehicleTypeForm').on('submit', function (e) {
         //     e.preventDefault();
         //     $.ajax({

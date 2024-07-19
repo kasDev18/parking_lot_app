@@ -1,7 +1,127 @@
 <% layout('layouts/boilerplate')%>
+<style>
+    .input-group-text, input, table tr th{
+        background-color: #947c2c;
+        border: 1px solid #947c2c !important;
+    }
+    .container .left{
+        padding-left: 10vw;
+        margin-top: -5vh;
+    }
+    .payments-rule, table td, th{
+        font-size: x-small;
+    }
+    table td, th{
+        padding: 3px 0;
+    }
+</style>
+<div class="vehicle-payment">
+    <%- include('../layouts/header')%>
 
-<%- include('../layouts/header')%>
-<h1>Payment Page</h1>
+    <%- include('../layouts/navbar')%>
 
-<div><%= entry %></div>
-<div><%= vehicleType %></div>
+    <h2 class="text-center page-title">Fees Calculator</h2>
+
+    <div class="container d-flex mt-5">
+        <div class="col py-5 left">
+            <ul class="list-unstyled">
+                <!-- <b><li class="d-flex"><span class="" style="font-size: small;">Entry Point</span>&nbsp;<input class="form-control " type="number" value="<%= entry %>"></li></b> -->
+                <b><li>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text fw-bold text-light" id="inputGroup-sizing-sm">Entry Point</span>
+                        <input type="number" class="form-control" value="<%= entry %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" readonly required>
+                    </div>
+                </li></b>
+                <b><li>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text fw-bold text-light" id="inputGroup-sizing-sm">Vehicle Type</span>
+                        <input type="text" class="form-control" value="<%= vehicleType %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" readonly required>
+                    </div>
+                </li></b>
+                <b><li>
+                    <div class="input-group input-group-sm mb-3 d-flex">
+                        <span class="input-group-text fw-bold text-light" id="inputGroup-sizing-sm">Time</span>
+                        <input type="number" class="form-control" max="24" placeholder="Hours" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                        <input type="number" class="form-control" max="60" placeholder="Minute" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                    </div>
+                </li></b>
+                <b><li>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text fw-bold text-light" id="inputGroup-sizing-sm">Hours</span>
+                        <input type="number" class="form-control" value="3" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                    </div>
+                </li></b>
+                <b><li>
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text fw-bold text-light" id="inputGroup-sizing-sm">Price (40PHP for 3 Hours  Flat Rate)</span>
+                        <input type="number" class="form-control" value="40" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" readonly required>
+                    </div>
+                </li></b>
+                <div class="text-end">
+                    <button class="btn btn-success">Calculate</button>
+                </div>  
+            </ul>
+            <div>
+                <p class="fw-lighter fst-italic text-center m-5" style="font-size: small"> For parking that exceeds 24 hours, every full 24 hour chunk is charged 5,000 pesos regardless of vehicle type.</p>
+            </div>
+        </div>
+        <div class="col-5 px-5">
+            <div class="border shadow py-3 px-3">
+                <div class="text-center">
+                    <h6 style="color: #7c6c2c;">Payment Matrix (PHP)</h6>
+                </div>
+                <table class="table table-hover table-sm text-center mt-4 table-bordered">
+                    <thead>
+                        <tr class="align-middle">
+                            <th class="bg-dark" scope="col" class=""></th>
+                            <th scope="col">Hourly</th>
+                            <th scope="col">24 Hours</th>
+                            <th scope="col">Exceed 24 Hours</th>
+                        </tr>
+                    </thead>
+                    <tbody class="align-middle">
+                        <tr>
+                            <th scope="row">Small (SP)</th>
+                            <td>20</td>
+                            <td class="col-2" rowspan="3">5000</td>
+                            <td rowspan="3">5000 + Hourly rate based from corresponding parking.</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Medium (MP)</th>
+                            <td>60</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Large (LP)</th>
+                            <td>100</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="payments-rule">
+                    <ul class="list-unstyled">
+                        <li>
+                            <p class="fw-lighter fst-italic">Vehicle leaving the parking complex and returning within one hour must be charged continuous rate,
+                                i.e. the vehicle must be considered as if it did not leave. Otherwise, rates must be implemented as described.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- <form action="" id="vehicleTypeForm" method="POST">
+            <input type="hidden" name="entry" value="<%= entry %>">
+            <input type="hidden" name="<%= vehicleType %>"> 
+            <button id="btn-vtype-submit" type="submit" class="btn btn-outline-warning d-none">button</button>
+        </form> -->
+    </div>
+
+    <%- include('../layouts/footer')%>
+</div>
+
+<script>
+    $(document).ready(function() {
+        var paymentCont = $('.vehicle-payment');
+        $('.payments-nav span').addClass(' active border-bottom border-3 border-warning text-warning fw-bold');
+        
+        // $(paymentCont+' h2').addClass('d-none');
+        // $(paymentCont+' .container').addClass('d-flex justify-content-center').html(bigSpinner);
+    });
+</script>

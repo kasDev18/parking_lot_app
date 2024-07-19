@@ -19,11 +19,14 @@
 <script>
     $(function () {
         $('ul li').hover(function () {
-            $('ul li span').removeClass('disabled');
-            $('ul li span').hover(function () {
-                $('ul li span').removeClass('text-warning');
+            nav.removeClass('disabled');
+            nav.hover(function () {
+                nav.removeClass('text-warning');
                 $(this).addClass('text-warning');
             })
+        })
+        $('ul').on('mouseleave', function () {
+            nav.removeClass('text-warning');
         })
     });
 </script>
