@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="col text-center mt-5">
-            <h1 class="text">State your entry point</h1>
+            <h2 class="text page-title">State your entry point</h2>
             <form id="entryForm" action="/vehicle/type" method="POST">
                 <ul class="pt-5 list-unstyled btn-entry" style="height: 50vh;">
                     <li class="my-3">
@@ -32,11 +32,7 @@
                 <button id="btn-entry-submit" type="submit" class="btn btn-outline-warning d-none">button</button>
             </form>
         </div>
-        <footer>
-            <p class="">&copy;
-                <script>document.write(new Date().getFullYear())</script> theParkingSpot. All rights reserved.
-            </p>
-        </footer>
+        <%- include('./layouts/footer')%>
     </div>
 
     <script>

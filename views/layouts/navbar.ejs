@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-sm bg-body-tertiary mb-5 col-md" style="height: 4vh;">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 col text-center" style="padding-bottom:8px ;">
+                <li class="nav-item col type-nav" id="type-nav">
+                    <span class="nav-link disabled">Vehicle Type</span>
+                </li>
+                <li class="nav-item col payments-nav" id="payments-nav">
+                    <span class="nav-link disabled">Payments</span>
+                </li>
+                <li class="nav-item col receipt-nav" id="receipt-nav">
+                    <span class="nav-link">Receipt</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script>
+    $(function () {
+        $('ul li').hover(function () {
+            $('ul li span').removeClass('disabled');
+            $('ul li span').hover(function () {
+                $('ul li span').removeClass('text-warning');
+                $(this).addClass('text-warning');
+            })
+        })
+    });
+</script>

@@ -21,21 +21,21 @@ app.get('/', (req, res) => {
 })
 
 app.get("/entry", function(req, res) {
-    res.render("entry");
+    setTimeout(() => {
+        res.render("entry");
+    }, 3000)
+});
+
+app.get("/vehicle/type", function(req, res) {
+    res.render("vehicle/type");
 });
 
 app.post("/vehicle/type", function(req, res) {
     const {entry} = req.body;
 
     setTimeout(() => {
-        res.render("type", {entry: entry});
-    }, 700);
+        res.render("vehicle/type", {entry: entry});
+    }, 1000);
 });
-
-// app.get("/vehicle/type", function(req, res) {
-//     setTimeout(() => {
-//         res.render("entry");
-//     }, 700);
-// });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
