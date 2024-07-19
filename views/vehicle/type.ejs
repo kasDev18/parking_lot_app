@@ -1,15 +1,7 @@
 <% layout('layouts/boilerplate')%>
 
 <div class="vehicle-type">
-    <div>   
-        <div class="col-md d-flex">
-            <div class="px-2 pt-1" id="logo">
-                <a href="/"><img class="bg-light border rounded img-fluid" src="images/app_logo.png" alt="" height="70"
-                    width="70"></a>
-            <div class="col-8 d-flex justify-content-center text-light align-items-center"></div>
-            <div class="col"></div>
-        </div>
-    </div>
+    <%- include('../layouts/header')%>
 
     <%- include('../layouts/navbar')%>
 
@@ -22,7 +14,7 @@
                     <img src="images/vehicle-type/motorcycle.jpg" alt="" class="" height="200" width="195">
                 </div>
                 <div class="p-2 text-center">
-                    <button class="btn btn-outline-success btn-sm col-12" data-bs-toggle="button" aria-pressed="false">Small</button>
+                    <button class="btn btn-outline-success btn-sm col-12 btn-vehicle-type" data-bs-toggle="button" aria-pressed="false">Small</button>
                 </div>
             </div>
             <div class="p-2 text-center">
@@ -30,7 +22,7 @@
                     <img src="images/vehicle-type/car.jpg" alt="" class="" height="200" width="195">
                 </div>
                 <div class="p-2 text-center">
-                    <button class="btn btn-outline-success btn-sm col-12" data-bs-toggle="button" aria-pressed="false">Medium</button>
+                    <button class="btn btn-outline-success btn-sm col-12 btn-vehicle-type" data-bs-toggle="button" aria-pressed="false">Medium</button>
                 </div>
             </div>
             <div class="p-2 text-center">
@@ -38,7 +30,7 @@
                     <img src="images/vehicle-type/bus.jpg" alt="" class="" height="200" width="195">
                 </div>
                 <div class="p-2 text-center">
-                    <button class="btn btn-outline-success btn-sm col-12" data-bs-toggle="button" aria-pressed="false">Large</button>
+                    <button class="btn btn-outline-success btn-sm col-12 btn-vehicle-type" data-bs-toggle="button" aria-pressed="false">Large</button>
                 </div>
             </div>
         </div>
@@ -71,6 +63,12 @@
                 </div>
             </div>
         </div>
+
+        <form action="/vehicle/payment" id="vehicleTypeForm" method="POST">
+            <input type="hidden" name="entry" value="<%= entry %>">
+            <input type="hidden" name="vehicle_type">
+            <button id="btn-vtype-submit" type="submit" class="btn btn-outline-warning d-none">button</button>
+        </form>
     </div>
 
     <%- include('../layouts/footer')%>
@@ -78,7 +76,29 @@
 
 <script>
     $(function () {
-        $('.type-nav span').addClass(' active border-bottom border-3 border-warning');
+        $('.type-nav span').addClass(' active border-bottom border-3 border-warning text-warning fw-bold');
         $('.type-nav span').addClass('active');
+
+
+        // var form = $('#vehicleTypeForm');
+        $('.btn-vehicle-type').click(function () {
+            var vehicleType = $(this).html().toLowerCase();
+
+            $('input[name="vehicle_type"]').val(vehicleType);
+            $('#btn-vtype-submit').trigger('click');
+            $('.vehicle-type h2').addClass('d-none');
+            $('.vehicle-type .container').addClass('d-flex justify-content-center').html(bigSpinner);
+        })
+        // $('#vehicleTypeForm').on('submit', function (e) {
+        //     e.preventDefault();
+        //     $.ajax({
+        //         url: base_url + 'vehicle/payment',
+        //         method: 'POST',
+        //         data: form.serialize(),
+        //         success: function (data) {
+        //             // console.log(data);
+        //         }
+        //     })
+        // })
     })
 </script>

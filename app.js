@@ -6,6 +6,7 @@ const path = require('path');
 const app = express();
 
 const port = 3000;
+const delay = 1000;
 
 app.engine('ejs', engine);
 
@@ -26,16 +27,25 @@ app.get("/entry", function(req, res) {
     }, 3000)
 });
 
-app.get("/vehicle/type", function(req, res) {
-    res.render("vehicle/type");
-});
+// app.get("/vehicle/type", function(req, res) {
+//     res.render("vehicle/type");
+// });
 
 app.post("/vehicle/type", function(req, res) {
     const {entry} = req.body;
 
     setTimeout(() => {
         res.render("vehicle/type", {entry: entry});
-    }, 1000);
+    }, delay);
 });
+
+app.post("/vehicle/payment", function(req, res) {
+    const {entry, vehicle_type} = req.body;
+    // console.log(vehicle_type);
+    setTimeout(() => {
+        res.render('vehicle/payment', {entry: entry, vehicleType: vehicle_type});
+    }, delay)
+});
+
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

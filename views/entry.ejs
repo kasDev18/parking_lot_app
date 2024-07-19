@@ -1,12 +1,7 @@
 <% layout('layouts/boilerplate')%>
 
     <div class="entry">
-        <div class="col-md d-flex">
-            <div class="px-2 pt-1 col" id="logo">
-                <a href="/"><img class="bg-light border rounded img-fluid" src="images/app_logo.png" alt="" height="70"
-                        width="70"></a>
-            </div>
-        </div>
+        <%- include('./layouts/header')%>
         <div class="col text-center mt-5">
             <h2 class="text page-title">State your entry point</h2>
             <form id="entryForm" action="/vehicle/type" method="POST">
