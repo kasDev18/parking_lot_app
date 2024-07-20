@@ -1,0 +1,20 @@
+<% layout('layouts/boilerplate')%>
+
+<div class="vehicle-receipt">
+    <%- include('../layouts/header')%>
+
+    <%- include('../layouts/navbar')%>
+
+    <h2 class="text-center page-title">Receipt</h2>
+
+    <div class="container d-flex mt-5">
+        <ul>
+            <li><%= entry %></li>
+            <li><%= vehicleType %></li>
+            <li><%= setHours %></li>
+            <li><%= setMins %></li>
+            <li><%= stayHours %></li>
+            <li><%= rate %></li>
+        </ul>
+    </div>
+</div>

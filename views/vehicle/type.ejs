@@ -14,7 +14,7 @@
                     <img src="images/vehicle-type/motorcycle.jpg" alt="" class="" height="200" width="195">
                 </div>
                 <div class="p-2 text-center">
-                    <button class="btn btn-outline-success btn-sm col-12 btn-vehicle-type" data-bs-toggle="button" aria-pressed="false">Small Parking (SP)</button>
+                    <button class="btn btn-outline-success btn-sm col-12 btn-vehicle-type" data-hourly-rate="20" data-bs-toggle="button" aria-pressed="false">Small Parking (SP)</button>
                 </div>
             </div>
             <div class="p-2 text-center">
@@ -22,7 +22,7 @@
                     <img src="images/vehicle-type/car.jpg" alt="" class="" height="200" width="195">
                 </div>
                 <div class="p-2 text-center">
-                    <button class="btn btn-outline-success btn-sm col-12 btn-vehicle-type" data-bs-toggle="button" aria-pressed="false">Medium Parking (MP)</button>
+                    <button class="btn btn-outline-success btn-sm col-12 btn-vehicle-type" data-hourly-rate="60" data-bs-toggle="button" aria-pressed="false">Medium Parking (MP)</button>
                 </div>
             </div>
             <div class="p-2 text-center">
@@ -30,7 +30,7 @@
                     <img src="images/vehicle-type/bus.jpg" alt="" class="" height="200" width="195">
                 </div>
                 <div class="p-2 text-center">
-                    <button class="btn btn-outline-success btn-sm col-12 btn-vehicle-type" data-bs-toggle="button" aria-pressed="false">Large Parking (LP)</button>
+                    <button class="btn btn-outline-success btn-sm col-12 btn-vehicle-type" data-hourly-rate="100" data-bs-toggle="button" aria-pressed="false">Large Parking (LP)</button>
                 </div>
             </div>
         </div>
@@ -67,6 +67,7 @@
         <form action="/vehicle/payment" id="vehicleTypeForm" method="POST">
             <input type="hidden" name="entry" value="<%= entry %>">
             <input type="hidden" name="vehicle_type">
+            <input type="hidden" name="hourly_rate">
             <button id="btn-vtype-submit" type="submit" class="btn btn-outline-warning d-none">button</button>
         </form>
     </div>
@@ -83,6 +84,7 @@
             var vehicleType = $(this).html().toLowerCase();
 
             $('input[name="vehicle_type"]').val(vehicleType);
+            $('input[name="hourly_rate"]').val($(this).data('hourly-rate'));
             $('#btn-vtype-submit').trigger('click');
             $('.vehicle-type h2').addClass('d-none');
             $('.vehicle-type .container').addClass('d-flex justify-content-center').html(bigSpinner);

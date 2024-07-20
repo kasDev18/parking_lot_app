@@ -24,46 +24,60 @@
 
     <div class="container d-flex mt-5">
         <div class="col py-5 left">
-            <ul class="list-unstyled">
-                <!-- <b><li class="d-flex"><span class="" style="font-size: small;">Entry Point</span>&nbsp;<input class="form-control " type="number" value="<%= entry %>"></li></b> -->
-                <b><li>
-                    <div class="input-group input-group-sm mb-3">
-                        <span class="input-group-text fw-bold text-light" id="inputGroup-sizing-sm">Entry Point</span>
-                        <input type="number" class="form-control" value="<%= entry %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" readonly required>
-                    </div>
-                </li></b>
-                <b><li>
-                    <div class="input-group input-group-sm mb-3">
-                        <span class="input-group-text fw-bold text-light" id="inputGroup-sizing-sm">Vehicle Type</span>
-                        <input type="text" class="form-control" value="<%= vehicleType %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" readonly required>
-                    </div>
-                </li></b>
-                <b><li>
-                    <div class="input-group input-group-sm mb-3 d-flex">
-                        <span class="input-group-text fw-bold text-light" id="inputGroup-sizing-sm">Time</span>
-                        <input type="number" class="form-control" max="24" placeholder="Hours" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                        <input type="number" class="form-control" max="60" placeholder="Minute" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                    </div>
-                </li></b>
-                <b><li>
-                    <div class="input-group input-group-sm mb-3">
-                        <span class="input-group-text fw-bold text-light" id="inputGroup-sizing-sm">Hours</span>
-                        <input type="number" class="form-control" value="3" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                    </div>
-                </li></b>
-                <b><li>
-                    <div class="input-group input-group-sm mb-3">
-                        <span class="input-group-text fw-bold text-light" id="inputGroup-sizing-sm">Price (40PHP for 3 Hours  Flat Rate)</span>
-                        <input type="number" class="form-control" value="40" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" readonly required>
-                    </div>
-                </li></b>
-                <div class="text-end">
-                    <button class="btn btn-success">Calculate</button>
-                </div>  
-            </ul>
-            <div>
-                <p class="fw-lighter fst-italic text-center m-5" style="font-size: small"> For parking that exceeds 24 hours, every full 24 hour chunk is charged 5,000 pesos regardless of vehicle type.</p>
-            </div>
+            <form id="vehiclePaymentForm" action="/vehicle/receipt" method="post">
+                <ul class="list-unstyled">
+                    <% if (errMessage) { %>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <%= errMessage %>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>        
+                        <% } %>
+                    <b><li> 
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text fw-bold text-light" id="inputGroup-sizing-sm">Entry Point</span>
+                            <input type="number" class="form-control" name="entry" id="entry" value="<%= entry %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" readonly required>
+                        </div>
+                    </li></b>
+                    <b><li>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text fw-bold text-light" id="inputGroup-sizing-sm">Vehicle Type</span>
+                            <input type="text" class="form-control" name="vehicle_type" id="vehicle_type" value="<%= vehicleType %>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" readonly required>
+                        </div>
+                    </li></b>
+                    <b><li>
+                        <div class="input-group input-group-sm mb-3 d-flex">
+                            <span class="input-group-text fw-bold text-light" id="inputGroup-sizing-sm">Time</span>
+                            <input type="number" class="form-control" name="time_hrs" id="time_hrs" value="3" placeholder="Hours" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                            <input type="number" class="form-control" name="time_mins" id="time_mins" value="0" placeholder="Minute" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                        </div>
+                    </li></b>
+                    <b><li>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text fw-bold text-light" id="inputGroup-sizing-sm">Hours</span>
+                            <input type="number" class="form-control" name="hours_stay" id="hours_stay" value="3" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" readonly>
+                        </div>
+                    </li></b>
+                    <b><li>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text fw-bold text-light" id="inputGroup-sizing-sm">Price (40PHP for 3 Hours  Flat Rate)</span>
+                            <input type="number" class="form-control" name="rate" id="rate" value="40" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" readonly required>
+                        </div>
+                    </li></b>
+                    <b><li>
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text fw-bold text-light" id="inputGroup-sizing-sm">Hourly Rate</span>
+                            <input type="number" class="form-control" name="hourly_rate" id="rate" value="<%- hourlyRate%>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" readonly>
+                        </div>
+                    </li></b>
+                    <div class="text-end">
+                        <button class="btn btn-success" id="btn-payment-submit">Calculate</button>
+                    </div>  
+                </ul>
+                <div>
+                    <p class="fw-lighter fst-italic text-center m-5" style="font-size: small"> For parking that exceeds 24 hours, every full 24 hour chunk is charged 5,000 pesos regardless of vehicle type.</p>
+                </div>
+                <button id="btn-vpayment-submit" type="submit" class="btn d-none">button</button>
+            </form>
         </div>
         <div class="col-5 px-5">
             <div class="border shadow py-3 px-3">
@@ -120,8 +134,25 @@
     $(document).ready(function() {
         var paymentCont = $('.vehicle-payment');
         $('.payments-nav span').addClass(' active border-bottom border-3 border-warning text-warning fw-bold');
+
+        // var entry = $('#entry').val();
+        // var vehicleType = $('#vehicle_type').val();
+        // var timeHrs = $('#time_hrs').val();
+        // var timeMin = $('#time_mins').val();
+        // var hrsStay = $('#hours_stay').val();
+        // var rate = $('#rate').val();
+        $('#time_hrs').on('keyup', function() {
+            // alert($(this).val());
+            $('#hours_stay').val($(this).val());
+        })
+        // if(timeHrs == 24) {
+
+        // }
         
-        // $(paymentCont+' h2').addClass('d-none');
-        // $(paymentCont+' .container').addClass('d-flex justify-content-center').html(bigSpinner);
+        $('#btn-payment-submit').click(function() {
+            $('#btn-vpayment-submit').trigger('click');
+            $('.vehicle-payment h2').addClass('d-none');
+            $('.vehicle-payment .container').addClass('d-flex justify-content-center').html(bigSpinner);
+        })
     });
 </script>
