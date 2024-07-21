@@ -14,6 +14,11 @@
     table td, th{
         padding: 3px 0;
     }
+    #time_hrs::-webkit-inner-spin-button, 
+    #time_hrs::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0; 
+    }
 </style>
 <div class="vehicle-payment">
     <%- include('../layouts/header')%>
@@ -66,7 +71,7 @@
                     <b><li>
                         <div class="input-group input-group-sm mb-3">
                             <span class="input-group-text fw-bold text-light" id="inputGroup-sizing-sm">Hourly Rate</span>
-                            <input type="number" class="form-control" name="hourly_rate" id="rate" value="<%- hourlyRate%>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" readonly>
+                            <input type="number" class="form-control" name="hourly_rate" id="hourly_rate" value="<%- hourlyRate%>" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" readonly>
                         </div>
                     </li></b>
                     <div class="text-end">
@@ -120,11 +125,6 @@
                 </div>
             </div>
         </div>
-        <!-- <form action="" id="vehicleTypeForm" method="POST">
-            <input type="hidden" name="entry" value="<%= entry %>">
-            <input type="hidden" name="<%= vehicleType %>"> 
-            <button id="btn-vtype-submit" type="submit" class="btn btn-outline-warning d-none">button</button>
-        </form> -->
     </div>
 
     <%- include('../layouts/footer')%>
@@ -132,22 +132,21 @@
 
 <script>
     $(document).ready(function() {
+        var urlParams = new URLSearchParams(window.location.search);
+        
+        if(urlParams.has('vehicle_type')) {
+            // window.location.href = '/entry';
+            $('#entry').val(urlParams.get('entry'));
+            $('#vehicle_type').val(urlParams.get('vehicle_type'));
+            $('#hourly_rate').val(urlParams.get('hourly_rate'));
+        }
+        
         var paymentCont = $('.vehicle-payment');
         $('.payments-nav span').addClass(' active border-bottom border-3 border-warning text-warning fw-bold');
 
-        // var entry = $('#entry').val();
-        // var vehicleType = $('#vehicle_type').val();
-        // var timeHrs = $('#time_hrs').val();
-        // var timeMin = $('#time_mins').val();
-        // var hrsStay = $('#hours_stay').val();
-        // var rate = $('#rate').val();
         $('#time_hrs').on('keyup', function() {
-            // alert($(this).val());
             $('#hours_stay').val($(this).val());
         })
-        // if(timeHrs == 24) {
-
-        // }
         
         $('#btn-payment-submit').click(function() {
             $('#btn-vpayment-submit').trigger('click');

@@ -1,5 +1,16 @@
 <% layout('layouts/boilerplate')%>
 
+<style>
+    .container{
+        font-size: small;
+    }
+    .total-summary .col b{
+        margin-left: 5vw;
+    }
+    .total-summary .total b,.total-summary .total span {
+        font-size: medium;
+    }
+</style>
 <div class="vehicle-receipt">
     <%- include('../layouts/header')%>
 
@@ -7,14 +18,137 @@
 
     <h2 class="text-center page-title">Receipt</h2>
 
-    <div class="container d-flex mt-5">
-        <ul>
-            <li><%= entry %></li>
-            <li><%= vehicleType %></li>
-            <li><%= setHours %></li>
-            <li><%= setMins %></li>
-            <li><%= stayHours %></li>
-            <li><%= rate %></li>
-        </ul>
+    <div class="container mt-3 d-flex justify-content-center">
+        <div class="row col-7">
+            <p class="fw-bold">XYZ Mall Corp.</p>
+            <br>
+            <div class="d-flex justify-content-center">
+                <div class="col d-flex flex-column">
+                    <span>123 Main St. Anytown,</span> 
+                    <span> USA 12345</span>
+                    <span> Phone: (123) 456-7890</span>
+                </div>
+                <div class="col d-flex flex-column mx-3">
+                    <span><b>RECEIPT# </b>XYZ-123</span>
+                    <span><b>RECEIPT DATE </b>20/07/2019</span>
+                    <span><b>P.O# </b>230215353</span>
+                    <span><b>DUE DATE </b>27/07/2019</span>
+                </div>
+            </div>
+            <table class="table mt-5">
+                <thead class="table-warning align-middle">
+                    <tr class="text-center">
+                        <th scope="col">Entry</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Parking Slot</th>
+                        <th scope="col">Hours/Minutes</th>
+                        <th scope="col">Stay Hours</th>
+                        <th scope="col">Hourly Rate</th>
+                        <th scope="col">24 Hour Rate</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    <tr class="parking-details">
+                        <th scope="row"><%- entry %></th>
+                        <td id="vehicle_type"><%- vehicleType %></td>
+                        <% if (vehicleType == 'small') {%>
+                                <td><span id="slot">SP</span>-1</td>
+                            <%} else if(vehicleType == 'medium') { %>
+                                    <td><span id="slot">MP</span>-<%- parkingSlot %></td>
+                                <% } else { %>
+                                        <td><span id="slot">LP</span>-8</td>
+                                    <% } %>
+                        <td><%- setHours %>.<%- setMins %></td>
+                        <td><%- stayHours %></td>
+                        <td><%- hourlyRate %></td>
+                        <td class="text-end"><%- dayRate %></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="d-flex total-summary">
+                <div class="col"></div>
+                <div class="col">
+                    <div class="d-flex">
+                        <b>Subtotal: </b> <span class="d-flex justify-content-end col"><%- rate %></span>    
+                    </div>
+                    <br>
+                    <div class="d-flex">
+                        <b>Sales Tax 5.0%: </b><span class="d-flex justify-content-end col" id="tax_value"></span>    
+                    </div>
+                    <br>
+                    <div class="d-flex total">
+                        <b>Total: </b><span class="d-flex justify-content-end col" id="total_value"></span>    
+                    </div>
+                </div>
+            </div>
+            <form id="vehicleReceiptForm" method="post">
+                <input type="hidden" name="entry" value="<%- entry %>">
+                <input type="hidden" name="vehicle_type" value="<%- vehicleType %>">
+                <input type="hidden" name="time_hrs" value="<%- setHours %>">
+                <input type="hidden" name="time_mins" value="<%- setMins %>">
+                <input type="hidden" name="hours_stay" value="<%- stayHours %>">
+                <input type="hidden" name="hourly_rate" value="<%- hourlyRate %>">
+                <input type="hidden" name="day_rate" value="<%- dayRate %>">
+                <input type="hidden" name="subtotal" value="<%- rate %>">
+                <input type="hidden" name="tax" id="tax">
+                <input type="hidden" name="total" id="total">
+
+                <button class="btn btn-success btn-lg btn-block col-12 mt-3" id="btn-receipt-print" type="button">Print</button>
+            </form>
+        </div>
     </div>
+
+    <%- include('../layouts/footer')%>
 </div>
+
+
+<script>
+    $(document).ready(function() {
+        $('.receipt-nav span').addClass(' active border-bottom border-3 border-warning text-warning fw-bold');
+
+        var tax = '<%- rate %>' * 0.05;
+        var total = parseInt(tax) + parseInt('<%- rate %>');
+        // var vehicleType = '<%- vehicleType %>';
+        $('#tax').val(tax);
+        $('#tax_value').html(tax);
+        $('#total').val(total);
+        $('#total_value').html(total);
+
+        $('#btn-receipt-print').click(function() {
+            var slot = $('.parking-details #slot').text();
+            var slotNumber = 1;
+            localStorage.setItem('slot', slot.toUpperCase());
+            if(localStorage.getItem('slotNumber') == 1){
+                localStorage.setItem('slotNumber', (parseInt(slotNumber) + 6) + 1); 
+            }
+            else if(localStorage.getItem('slotNumber') == 8){
+                localStorage.setItem('slotNumber', parseInt(localStorage.getItem('slotNumber')) + 1);
+            }else if(localStorage.getItem('slotNumber') < 10){
+                localStorage.setItem('slotNumber', parseInt(localStorage.getItem('slotNumber')) + 1);
+            }else if(localStorage.getItem('slotNumber') == 10){
+                localStorage.setItem('slotNumber', parseInt(localStorage.getItem('slotNumber')) + 3);
+            }else if(localStorage.getItem('slotNumber') == 13){
+                localStorage.setItem('slotNumber', parseInt(localStorage.getItem('slotNumber')) + 7);
+            }else if(localStorage.getItem('slotNumber') == 20){
+                localStorage.setItem('slotNumber', parseInt(localStorage.getItem('slotNumber')) + 3);
+            }else if(localStorage.getItem('slotNumber') > 20 && localStorage.getItem('slotNumber') < 25){
+                localStorage.setItem('slotNumber', parseInt(localStorage.getItem('slotNumber')) + 1);
+            }
+            else{
+                localStorage.setItem('slotNumber', slotNumber);
+            }
+            Swal.fire({
+                title: "Parking Slot Received!",
+                text: "Do you want to navigate to the map?",
+                icon: "success",
+            }).then((result) => {
+                if(result.isConfirmed) {
+                    $('.vehicle-receipt').addClass('d-flex justify-content-center align-items-center').css('height', '100vh').html(bigSpinner);
+                    window.location.href = '/map';
+                }
+            }).catch((err) => {
+                
+            });
+        })
+    });
+</script>

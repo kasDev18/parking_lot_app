@@ -1,0 +1,202 @@
+<% layout('layouts/boilerplate')%>
+<link rel="stylesheet" href="css/map.css">
+
+<div class="map">
+    <%- include('./layouts/header')%>
+
+    <h2 class="text-center page-title">Parking Lot Map</h2>
+
+    <div class="container mt-5 d-flex">
+        
+        <div class="d-flex border border-5 border-dark col layout">
+            <div class="col lp">
+                <div class="d-flex col mb-5 lp-slots-upper slots">
+                    <% for (let i = 1; i < 8; i++) { %>
+                        <div class="col px-2 pb-2 cont" data-id="<%- i%>" data-slot="LP">
+                            <div class="col slot">LP-<%- i %></div>
+                        </div>
+                        <% } %>
+                </div>
+                <div class="col d-flex">
+                    <div class="col-2 entry entry-1 bg-warning">Entry 1</div>
+                    <h3 class="col text-center">LARGE PARKING (LP)</h3>
+                </div>
+                <div class="d-flex align-content-space-evenly lp-slots-lower">
+                    <div class="col d-flex justify-content-center flex-column left slots">
+                        <% for (let i = 8; i < 14; i++) { %>
+                            <div class="border border-dark m-2 col slot" data-id="<%- i%>" data-slot="LP">LP-<%- i%></div>
+                            <% } %>
+                    </div>
+                    <div class="col d-flex justify-content-center align-items-center flex-column middle slots">
+                        <% for (let i = 14; i < 20; i++) { %>
+                            <div class="border border-dark m-2 col slot" data-id="<%- i%>" data-slot="LP">LP-<%- i%></div>
+                            <% } %>
+                    </div>
+                    <div class="col d-flex align-items-end flex-column right slots">
+                        <% for (let i = 20; i < 26; i++) { %>
+                            <div class="border border-dark m-2 col slot" data-id="<%- i%>" data-slot="LP">LP-<%- i%></div>
+                            <% } %>
+                    </div>
+                </div> 
+            </div>
+            <div class="col mp d-flex flex-column">
+                <div class="col d-flex flex-column">
+                    <div class="d-flex col mb-5 mp-slots-upper slots col">
+                        <% for (let i = 1; i < 8; i++) { %>
+                            <div class="col px-2 pb-2 cont d-flex align-items-center">
+                                <div class="col slot" data-id="<%- i%>" data-slot="MP">MP-<%- i %></div>
+                            </div>
+                            <% } %>
+                    </div>
+                    <div class="col d-flex">
+                        <div class="col-8 d-flex justify-content-end mp-title-cont">
+                            <div class="col"></div>
+                            <div class="col d-flex align-items-end">
+                                <h3 class="text-center">MEDIUM PARKING (MP)</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col d-flex mp-slots-lower">
+                        <div class="col-1 entry entry-2 bg-warning">
+                            Entry 2
+                        </div>
+                        <% for (let i = 8; i < 11; i++) { %>
+                            <div class="col cont d-flex align-items-center justify-content-center px-4 slots">
+                                <div class="col border border-dark m-2 col slot" data-id="<%- i%>" data-slot="MP">MP-<%- i%></div>
+                            </div>  
+                            <% } %>
+                    </div>
+                </div>
+                <div class="lp-mp-ext"></div>
+                <div class="col sp d-flex flex-column">
+                    <div class="bg-light mp-sp-ext"></div>
+                    <div class="col-1 entry entry-3 bg-warning">
+                        Entry 3
+                    </div>
+                    <div class="col border-top border-5 border-dark sp-slots-upper d-flex">
+                        <div class="col-7 d-flex ">
+                            <% for (let i = 1; i < 5; i++) { %>
+                                <div class="col px-2 pb-2 cont d-flex align-items-center slots">
+                                    <div class="col slot" data-id="<%- i%>" data-slot="SP">SP-<%- i %></div>
+                                </div>
+                                <% } %>
+                        </div>
+                        <div class="col d-flex">
+                            <div class="col"></div>
+                            <div class="col cont d-flex align-items-center slots">
+                                <div class="col slot isolated" style="height: 6vh;" data-id="5" data-slot="SP">SP-5</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col d-flex align-items-center justify-content-center">
+                        <h3 class="text-center">SMALL PARKING (SP)</h3>
+                    </div>
+                    <div class="d-flex col sp-slots-lower col align-items-end justify-content-end">
+                        <% for (let i = 6; i < 14; i++) { %>
+                            <div class="col px-2 pb-2 cont d-flex align-items-center slots">
+                                <div class="col d-flex justify-content-center align-items-center slot" data-id="<%- i%>" data-slot="SP">SP-<%- i %></div>
+                            </div>
+                            <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 p-5">
+            <h3>Legends:</h3>
+            <div class="legends d-flex flex-column align-content-space-between">
+                <div class="col d-flex align-items-center shadow p-2">
+                    <div class="border box border-3 border-dark bg-info shadow"></div>
+                    <div><span class="ms-2">SP Active Slot</span></div>
+                </div>
+                <div class="col d-flex align-items-center shadow p-2">
+                    <div class="border box border-3 border-dark bg-danger shadow"></div>
+                    <div><span class="ms-2">MP Active Slot</span></div>
+                </div>
+                <div class="col d-flex align-items-center shadow p-2">
+                    <div class="border box border-3 border-dark bg-success shadow"></div>
+                    <div><span class="ms-2">LP Active Slot</span></div>
+                </div>
+                <div class="col d-flex align-items-center shadow p-2">
+                    <div class="border box border-3 border-dark shadow"></div>
+                    <div><span class="ms-2">Vacant Slot</span></div>
+                </div>
+                <div class="col d-flex align-items-center shadow p-2">
+                    <div class="border box border-3 border-dark shadow bg-warning"></div>
+                    <div><span class="ms-2">Entrances (Entry)</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include('./layouts/footer')%>
+</div>
+
+<script>
+    $(document).ready(function() {
+        var slot;
+
+        // LARGE PARKING
+        var lpSlotsUpper = $('.lp-slots-upper').children();
+        var lpSlotsLowerLeft = $('.lp-slots-lower .left').children();
+        var lpSlotsLowerMiddle = $('.lp-slots-lower .middle').children();
+        var lpSlotsLowerRight = $('.lp-slots-lower .right').children();
+        for (let i = 0; i < lpSlotsUpper.length; i++) {
+            if(i < lpSlotsUpper.length) {
+                slot = lpSlotsUpper[i];
+                $(slot).addClass('bg-success');
+            };
+            
+        }
+        for (let i = 1; i < 7; i++) {
+            if(i !== 0) {
+                slot = lpSlotsLowerLeft[i];
+                if(i > 2 && i < 5){
+                    $(slot).addClass('bg-success');
+                }
+            };
+            
+        }
+        for (let i = 0; i < 7; i++) {
+            slot = lpSlotsLowerMiddle[i];
+            $(slot).addClass('bg-success');
+        }
+        for (let i = 1; i < 7; i++) {
+            slot = lpSlotsLowerRight[i];
+            if(i > 0 && i < 3){
+                $(slot).addClass('bg-success');
+            }
+        }
+
+        // MEDIUM PARKING
+        var mpSlotsUpper = $('.mp-slots-upper').children();
+        var mpSlotsLower = $('.mp-slots-lower').children();
+        for (let i = 0; i < mpSlotsUpper.length; i++) {
+            if(i > 2 && i < mpSlotsUpper.length) {
+                slot = mpSlotsUpper[i];
+                $(slot).addClass('bg-danger');
+            }
+        }
+
+        // SMALL PARKING
+        var spSlotsUpper = $('.sp-slots-upper').children();
+        var spSlotsLower = $('.sp-slots-lower').children();
+        for (let i = 0; i < spSlotsLower.length; i++) {
+            slot = spSlotsLower[i];
+            $(slot).addClass('bg-info');
+        }
+
+        var slots = $('.slots').children();
+        for (let i = 0; i < slots.length; i++) {
+            // $(slots[i]).addClass('bg-warning');
+            var lsSlot = localStorage.getItem(slot);
+            var lsSlotNumber = localStorage.getItem('slotNumber');
+            if(i == lsSlotNumber) {
+                var dataID = $(slots[i - 1]).attr('data-id');
+                var dataSlot = $(slots[i - 1]).attr('data-slot');
+                console.log(dataID);
+                // if((slots[i].data('slot') == lsSlot) && (slots[i].data('id') == lsSlotNumber)) {
+                $(slots[i - 1]).addClass('bg-success');
+                // }
+            }
+        }
+    });
+</script>

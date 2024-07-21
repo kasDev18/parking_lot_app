@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-07-19T00:56:33.173Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" etag="VKG6jeuPsQLOtQjsKSrc" version="24.7.1" type="device" pages="3">
+<mxfile host="app.diagrams.net" modified="2024-07-20T07:25:44.252Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" etag="gMj7OzoFPPxvsYmjlqEg" version="24.7.1" type="device" pages="4">
   <diagram name="entry" id="vONQHhjzHzYRnJBfQUEY">
     <mxGraphModel dx="2350" dy="796" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -394,6 +394,119 @@
         </mxCell>
         <mxCell id="ePZsj9GV-MxJ-FNyGXhH-1" value="&lt;font color=&quot;#cccccc&quot;&gt;PHP&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="365" y="570" width="35" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="0u2-WYfvwQIUC654tFez" name="Page-4">
+    <mxGraphModel dx="1050" dy="557" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="BWkit1gCIm-uRniwwafc-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="200" width="690" height="560" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-2" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://cdn.worldvectorlogo.com/logos/the-parking-spot.svg;" vertex="1" parent="1">
+          <mxGeometry x="80" y="210" width="70" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-3" value="&lt;pre&gt;&lt;pre style=&quot;border-color: var(--border-color);&quot;&gt;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;&lt;font style=&quot;border-color: var(--border-color);&quot; face=&quot;Tahoma&quot;&gt;MAP AVAILABILITY&lt;/font&gt;&lt;/b&gt;&lt;/pre&gt;&lt;/pre&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="210" y="230" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-4" value="" style="endArrow=none;html=1;rounded=0;exitX=1.007;exitY=0.159;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.003;entryY=0.161;entryDx=0;entryDy=0;entryPerimeter=0;fillColor=#f5f5f5;strokeColor=#f2f2f2;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="750" y="320.00000000000006" as="sourcePoint" />
+            <mxPoint x="63.19999999999982" y="320.73999999999995" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-5" value="&lt;pre&gt;&lt;pre style=&quot;border-color: var(--border-color);&quot;&gt;&lt;font face=&quot;Tahoma&quot;&gt;&lt;b&gt;Vehicle Type&lt;/b&gt;&lt;/font&gt;&lt;/pre&gt;&lt;/pre&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="140" y="290" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-6" value="&lt;pre&gt;&lt;pre style=&quot;border-color: var(--border-color);&quot;&gt;&lt;font face=&quot;Tahoma&quot;&gt;&lt;b&gt;Payment&lt;/b&gt;&lt;/font&gt;&lt;/pre&gt;&lt;/pre&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="385" y="290" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-7" value="&lt;pre&gt;&lt;pre style=&quot;border-color: var(--border-color);&quot;&gt;&lt;font face=&quot;Tahoma&quot;&gt;&lt;b&gt;Receipt&lt;/b&gt;&lt;/font&gt;&lt;/pre&gt;&lt;/pre&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="635.12" y="290" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-8" value="" style="endArrow=none;html=1;rounded=0;entryX=-0.002;entryY=0.193;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=3;strokeColor=#ebc333;shadow=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="761" y="320" as="sourcePoint" />
+            <mxPoint x="540" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-10" value="&lt;h1&gt;Calculator of fees&lt;/h1&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="270" y="370" width="310.92" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-14" value="@2024 XYZ Corp. All rights reserved" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="325.46" y="730" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-15" value="&lt;b&gt;Type&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="252.96" y="460" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-16" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="302.96000000000004" y="465" width="250" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-17" value="&lt;b&gt;Price (40PHP for 3 Hours&amp;nbsp; Flat Rate)&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="268.42" y="550.39" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-18" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="482.96000000000004" y="555.39" width="70" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-19" value="40" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="472.96000000000004" y="550.39" width="45" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-20" value="&lt;span style=&quot;font-family: Arial, Helvetica, sans-serif; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; float: none; display: inline !important;&quot;&gt;&lt;i style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 10px;&quot; color=&quot;#999999&quot;&gt;&amp;nbsp;For parking that exceeds 24 hours, every full 24 hour chunk is charged 5,000 pesos regardless of vehicle type.&lt;/font&gt;&lt;/i&gt;&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="257.96000000000004" y="600.2199999999999" width="340" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-21" value="&lt;b&gt;Entry Point&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="262.96000000000004" y="430.39" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-22" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="342.96000000000004" y="435.39" width="210" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-23" value="Entry 1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="342.96000000000004" y="430" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-24" value="Medium" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="292.96000000000004" y="460.39" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-25" value="&lt;b&gt;Hours&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="268.42" y="520.48" width="44.54" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-26" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="412.96000000000004" y="525.48" width="140" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-27" value="3" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="452.96000000000004" y="520.39" width="45" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-28" value="" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-minus-circled-128.png" vertex="1" parent="1">
+          <mxGeometry x="420.76" y="528.48" width="14.41" height="14.41" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-29" value="" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn0.iconfinder.com/data/icons/google-material-design-3-0/48/ic_add_circle_48px-128.png" vertex="1" parent="1">
+          <mxGeometry x="532.96" y="527.04" width="17.3" height="17.3" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-30" value="&lt;b&gt;Time&amp;nbsp;&lt;/b&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="262.96000000000004" y="490.39" width="47.73" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-31" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="387.5" y="495.48" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-32" value="&lt;font color=&quot;#cccccc&quot;&gt;Hour&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="387.5" y="490.39" width="35" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-33" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="472.96000000000004" y="495.48" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-34" value="&lt;font color=&quot;#cccccc&quot;&gt;Minute&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="467.5" y="490.39" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-35" value="" style="html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;dashed=0;strokeWidth=2;shape=mxgraph.ios7.misc.down;strokeColor=#947c2c;" vertex="1" parent="1">
+          <mxGeometry x="451.96000000000004" y="502.39" width="12" height="6" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-36" value="" style="html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;shadow=0;dashed=0;strokeWidth=2;shape=mxgraph.ios7.misc.down;strokeColor=#947c2c;" vertex="1" parent="1">
+          <mxGeometry x="535.61" y="502.48" width="12" height="6" as="geometry" />
+        </mxCell>
+        <mxCell id="BWkit1gCIm-uRniwwafc-37" value="&lt;font color=&quot;#cccccc&quot;&gt;PHP&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="517.96" y="550.39" width="35" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

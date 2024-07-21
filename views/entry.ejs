@@ -32,6 +32,15 @@
 
     <script>
         $(function () {
+            var urlParams = new URLSearchParams(window.location.search);
+            if(urlParams.has('is_no_data')) {
+                $('#entry').val(urlParams.get('is_no_data'));
+                Swal.fire({
+                    title: "No Data Found!",
+                    text: "Please fill out the form to continue.",
+                    icon: "warning",
+                });
+            }
             var btnEntry = $('.btn-entry button');
             btnEntry.on('click', function () {
                 var id = $(this).attr('data-id');

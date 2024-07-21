@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const express  = require('express');
 const engine = require('ejs-mate');
 const bodyParser = require('body-parser');
@@ -28,10 +29,6 @@ app.get("/entry", function(req, res) {
     }, 3000)
 });
 
-// app.get("/vehicle/type", function(req, res) {
-//     res.render("vehicle/type");
-// });
-
 app.post("/vehicle/type", function(req, res) {
     var {entry} = req.body;
 
@@ -39,6 +36,16 @@ app.post("/vehicle/type", function(req, res) {
         res.render("vehicle/type", {entry: entry});
     }, delay);
 });
+
+app.get('/vehicle/payment', function(req, res) {
+    var {entry, vehicle_type, hourly_rate, errMessage} = req.body;
+    var err_message = "Set minutes to should be less than or equal to 60";
+    var is_no_data = false;
+
+    setTimeout(() => {
+        res.render('vehicle/payment', {entry: entry, vehicleType: vehicle_type, hourlyRate: hourly_rate, errMessage: err_message});
+    }, delay)
+})
 
 app.post("/vehicle/payment", function(req, res) {
     var {entry, vehicle_type, hourly_rate} = req.body;
@@ -64,51 +71,62 @@ app.post("/vehicle/receipt", function(req, res) {
     var days;
     var getPositiveDiff;
     var getPositiveProd;
+    var parkingSlot = false;
+    var is_day_rate = false;
     var err_message = false;
 
     if(time_hrs && time_mins){
+        if(time_mins > 60){
+            res.redirect('/vehicle/payment?entry=' + entry + '&vehicle_type=' + vehicle_type + '&hourly_rate=' + hourly_rate);
+        }
+
         if(defaultSetHrs == dayHours){
             if(defaultSetMins < defaultHalfHr){
                 hours_stay = defaultSetHrs;
                 rate = dayRate;
+                dayRate = dayRate;
             }else{
                 hours_stay = exceedHalfHrs;
                 getPositiveDiff = hours_stay > dayHours ? (hours_stay - dayHours) : (dayHours - hours_stay);
                 rate = dayRate + (getPositiveDiff * defaultHourlyRate);
+                // dayRate = dayRate;
+                is_day_rate = !is_day_rate;
             }
         }else{
             if(defaultSetHrs < dayHours){
                 if(defaultSetHrs < defaultHrs){
-                    // err_message = "Set hours cannot be less than 3";
-                    // res.render('vehicle/payment', {entry: entry, vehicleType: vehicle_type, hourlyRate: hourly_rate, errMessage: err_message});
                     hours_stay = defaultSetHrs;
                     rate = defaultHourlyRate * defaultSetHrs;
+                    dayRate = 0;
                 }else if(defaultSetHrs == defaultHrs && defaultSetMins == defaultMin){
                     hours_stay = defaultSetHrs;
                     rate = defaultRate;
+                    // dayRate = 0;
                 }else if(defaultSetMins < defaultHalfHr){
                     hours_stay = defaultSetHrs;
                     rate = hours_stay * defaultHourlyRate;
+                    // dayRate = 0;
                 }else{
                     hours_stay = exceedHalfHrs;
                     days = Math.floor((hours_stay / dayHours).toFixed(2));
                     getPositiveDiff = hours_stay > dayHours ? (hours_stay - dayHours) : (dayHours - hours_stay);
                     rate = hours_stay > dayHours ? (dayRate + (getPositiveDiff * defaultHourlyRate)) : (hours_stay == dayHours ? dayRate : (hours_stay * defaultHourlyRate));
+                    is_day_rate = hours_stay >= dayHours ? true : false;
                 }
             }else if(defaultSetHrs > dayHours){
                 if (defaultSetMins < defaultHalfHr) {
                     hours_stay = defaultSetHrs;
                     days = Math.floor((hours_stay / dayHours).toFixed(2));
                     getPositiveDiff = hours_stay > dayHours ? (hours_stay - dayHours) : (dayHours - hours_stay);
-                    // rate = dayRate + (days + defaultHourlyRate);
                     rate = dayRate * days + (getPositiveDiff * defaultHourlyRate);
-                    
+                    is_day_rate = !is_day_rate;
                 } else {
                     hours_stay = exceedHalfHrs;
                     days = Math.floor((hours_stay / dayHours).toFixed(2));
                     getPositiveProd = dayHours * days;
                     getPositiveDiff = hours_stay > getPositiveProd ? (hours_stay - getPositiveProd) : (getPositiveProd - hours_stay);
                     rate = (dayRate * days) + (getPositiveDiff * defaultHourlyRate);
+                    is_day_rate = !is_day_rate;
                 }
             }
         }
@@ -119,9 +137,28 @@ app.post("/vehicle/receipt", function(req, res) {
     }
     
     setTimeout(() => {
-        res.render('vehicle/receipt', {entry: entry, vehicleType: vehicle_type, setHours: time_hrs, setMins: time_mins, stayHours: hours_stay, rate: rate});
+        res.render('vehicle/receipt', {entry: entry, vehicleType: vehicle_type, setHours: time_hrs, setMins: time_mins, stayHours: hours_stay, rate: rate, hourlyRate: hourly_rate, dayRate: is_day_rate ? dayRate : 0, parkingSlot: parkingSlot ? parkingSlot : "1"});
     }, delay)
 });
+
+// Database
+const ParkingLot = require('./models/parkingLot');
+
+mongoose.connect('mongodb://127.0.0.1:27017/parkingLotDB')
+    .then(() => console.log('Connected!'))
+
+app.get("/map", function(req, res) {
+    setTimeout(() => {
+        res.render("map", {});
+        // res.redirect('/map');
+    }, 2000)
+});
+
+app.post("/map", function(req, res) {
+    const { entry, vehicle_type, time_hrs, time_mins, hours_stay, hourly_rate, day_rate, subtotal, tax, total } = req.body;
+
+    res.render("map", { entry: entry, vehicleType: vehicle_type, setHours: time_hrs, setMins: time_mins, stayHours: hours_stay, hourlyRate: hourly_rate, dayRate: day_rate, subtotal: subtotal, tax: tax, total: total });
+})
 
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

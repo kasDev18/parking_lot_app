@@ -1,0 +1,89 @@
+.layout{
+    height: 70vh;
+}
+.legends{
+    height: 20vh;
+}
+.box{
+    height: 30px;
+    width: 30px;
+}
+.entry-1{
+    height: 5vh;
+    margin-left: -10px;
+    /* margin-top: 9vh; */
+}
+.lp .entry{
+    position: relative;
+    left: -5px;
+}
+.lp-slots-upper .cont, .mp-slots-upper .cont, .sp-slots-lower .cont, .sp-slots-upper .cont{
+    height: 11vh; 
+    border-right: 4px solid black;
+}
+.lp-slots-upper .slot{
+    height: 10vh;
+}
+.lp-slots-lower .left, .lp-slots-lower .middle{
+    height: 45vh;
+}
+.lp-slots-lower .slot{
+    width: 6vw;
+}
+.lp h3, .mp h3, .sp h3{
+    color: rgb(225, 224, 224);
+}
+.mp{
+    border-left: 11px solid black;
+}
+.mp-slotsp-lower .slot{
+    height: 6vh;
+}
+.mp-title-cont{
+    margin: -15vh 0 0 0;
+}
+.slot{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.entry, .mp-sp-ext{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.entry, .lp-mp-ext{
+    border-top: 5px solid black;
+    border-bottom: 5px solid black;
+    background: white;
+}
+.entry-2, .entry-3{
+    position: absolute;
+    right: 28%; 
+    height: 6vh;
+}
+.entry-3{
+    position: absolute;
+    right: 28%; 
+    height: 6vh;
+}
+.entry-2{
+    top: 38.5%;
+}
+.entry{
+    bottom: 28.5%; 
+}
+.lp-mp-ext{
+    height: 6vh; 
+    width: 10vw; 
+    position: absolute; 
+    top: 39%; 
+    left: 39.1%;
+}
+.mp-sp-ext{
+    position: absolute; 
+    bottom: 38.5%; 
+    right: 38%; 
+    height: 6vh; 
+    width: 4vw;
+}
